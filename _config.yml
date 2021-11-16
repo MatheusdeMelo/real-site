@@ -29,7 +29,7 @@ twitter_username: Eu não tenho :)
 github_username:  MatheusdeMelo
 
 # Build settings
-theme: jekyll-theme-slate
+theme: slate
 plugins:
   - jekyll-feed
 
