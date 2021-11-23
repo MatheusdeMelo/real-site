@@ -21,4 +21,4 @@ jobs:
       - uses: helaili/jekyll-action@v2
       # Runs a single command using the runners shell
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
