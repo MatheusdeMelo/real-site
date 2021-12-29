@@ -15,27 +15,19 @@ jobs:
       - image: cimg/ruby:2.7.4 
     environment:
       BUNDLE_PATH: ~repo/vendor/bundle
+    executor: ruby/default
     steps:
       - checkout
       - run:
-          name: Bundle Install
-          command: bundle check || bundle install
+          name: Install Jekyll Dependencies
+          command: bundle install
       - run:
-          name: Jekyll build
+          name: Build Jekyll Site
           command: bundle exec jekyll build
-      - run:
-          name: HTMLProofer tests
-          command: |
-            bundle exec htmlproofer ./_site \
-            --alow-hash-href \
-            --check favicon \
-            --check html \
-            --disable-external
       - persist_to_workspace:
           root: ./
           paths:
             - _site
-      - ruby/bundle-install
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
