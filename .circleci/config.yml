@@ -14,7 +14,7 @@ jobs:
     docker:
       - image: cimg/ruby:2.7.4 
     environment:
-      BUNDLE_PATH: ~repo/vendor/bundle
+      BUNDLE_PATH: ~/repo/vendor/bundle
     executor: ruby/default
     steps:
       - checkout
