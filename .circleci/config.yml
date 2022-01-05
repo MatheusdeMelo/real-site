@@ -27,7 +27,7 @@ jobs:
     docker:
       - image: cimg/python:3.9.1
     environment: 
-      S3_BUCKET_NAME: escalandoanuvem-matheus
+      S3_BUCKET_NAME: escalando-a-nuvem-matheus
     steps:
       - aws-cli/setup:
           aws-access-key-id: AWS_ACCESS_KEY_ID
@@ -35,9 +35,6 @@ jobs:
           aws-region: AWS_REGION
       - attach_workspace:
           at: ./
-#      - run:
-#          name: Install AWS CLI
-#          command: pip install awscli --upgrade --user
       - run:
           name: Upload to s3
           command: aws s3 sync ./_site s3://$S3_BUCKET_NAME/ --delete
