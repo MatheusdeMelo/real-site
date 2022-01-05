@@ -30,13 +30,13 @@ jobs:
       S3_BUCKET_NAME: escalandoanuvem-matheus
     steps:
       - attach_workspace:
-        at: ./
+          at: ./
       - run:
-        name: Install AWS CLI
-        command: pip install awscli --upgrade --user
+          name: Install AWS CLI
+          command: pip install awscli --upgrade --user
       - run:
-        name: Upload to s3
-        command: ~/.local/bin/aws s3 sync ./_site s3://$S3_BUCKET_NAME/ --delete --acl public-read
+          name: Upload to s3
+          command: ~/.local/bin/aws s3 sync ./_site s3://$S3_BUCKET_NAME/ --delete --acl public-read
 
 
 
