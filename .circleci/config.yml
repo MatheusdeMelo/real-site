@@ -13,9 +13,17 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
+      - restore_cache:
+          key:
+            - rubygems-v1-({ checksum "Gemfile.lock" })
+            - rubygems-v1-fallback
       - run:
           name: Install Jekyll Dependencies
-          command: bundle install
+          command: bundle check || bundle install
+      - save_cache:
+          keys: rubygems-v1-({ checksum "Gemfile.lock" })
+          paths:
+            - vendor/bundle
       - run:
           name: Build Jekyll Site
           command: bundle exec jekyll build
