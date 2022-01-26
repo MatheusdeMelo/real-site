@@ -14,14 +14,14 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key:
+          keys:
             - rubygems-v1-({ checksum "Gemfile.lock" })
             - rubygems-v1-fallback
       - run:
           name: Install Jekyll Dependencies
           command: bundle check || bundle install
       - save_cache:
-          keys: rubygems-v1-({ checksum "Gemfile.lock" })
+          key: rubygems-v1-({ checksum "Gemfile.lock" })
           paths:
             - ~/repo/vendor/bundle
       - run:
